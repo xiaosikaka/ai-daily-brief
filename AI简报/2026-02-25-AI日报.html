@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 日报 - 2026-02-25</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background-color: #fafafa;
+            color: #37352f;
+            line-height: 1.7;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 24px 20px;
+        }
+
+        /* 头部 */
+        .header {
+            text-align: center;
+            padding: 32px 0 24px;
+            border-bottom: 1px solid #e8e8e8;
+            margin-bottom: 28px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #37352f;
+            letter-spacing: 1px;
+        }
+
+        .header .date {
+            font-size: 15px;
+            color: #9b9a97;
+            margin-top: 8px;
+        }
+
+        .header .stats {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 16px;
+            font-size: 14px;
+            color: #6b6b6b;
+        }
+
+        .header .stats span {
+            background: #f1f1ef;
+            padding: 4px 12px;
+            border-radius: 4px;
+        }
+
+        /* 深度学习精选 */
+        .highlight-banner {
+            background: linear-gradient(135deg, #f6f3ff 0%, #eef2ff 100%);
+            border: 1px solid #e0d7f8;
+            border-radius: 8px;
+            padding: 14px 20px;
+            margin-bottom: 24px;
+            font-size: 14px;
+            color: #5b4a9e;
+        }
+
+        .highlight-banner strong {
+            color: #4a3a8a;
+        }
+
+        /* 信息卡片 */
+        .card {
+            background: #ffffff;
+            border: 1px solid #e8e8e8;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 16px;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .card-index {
+            font-size: 12px;
+            font-weight: 600;
+            color: #9b9a97;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #37352f;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .card-date {
+            font-size: 12px;
+            color: #9b9a97;
+            margin-bottom: 12px;
+        }
+
+        .card-field {
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .card-field .label {
+            font-weight: 600;
+            color: #37352f;
+            display: inline;
+        }
+
+        .card-field .value {
+            color: #4a4a4a;
+            display: inline;
+        }
+
+        /* 标签 */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 4px;
+            margin-bottom: 10px;
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 500;
+            padding: 2px 10px;
+            border-radius: 12px;
+            line-height: 1.6;
+        }
+
+        .tag-技术 {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .tag-产品 {
+            background: #fce4ec;
+            color: #c62828;
+        }
+
+        .tag-应用 {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .tag-论文 {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .tag-行业 {
+            background: #f3e5f5;
+            color: #6a1b9a;
+        }
+
+        /* 分类区块 */
+        .section {
+            margin-bottom: 36px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e8e8e8;
+        }
+
+        .section-icon {
+            font-size: 22px;
+            line-height: 1;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #37352f;
+        }
+
+        .section-count {
+            font-size: 12px;
+            color: #9b9a97;
+            background: #f1f1ef;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-left: 4px;
+        }
+
+        .section-技术突破 .section-header {
+            border-bottom-color: #1565c0;
+        }
+
+        .section-产品应用 .section-header {
+            border-bottom-color: #c62828;
+        }
+
+        .section-行业动态 .section-header {
+            border-bottom-color: #6a1b9a;
+        }
+
+        /* 链接 */
+        .card-link a {
+            color: #2383e2;
+            text-decoration: none;
+            font-size: 13px;
+            word-break: break-all;
+        }
+
+        .card-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* 非固定信息源标记 */
+        .source-external {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 500;
+            color: #b45309;
+            background: #fef3c7;
+            padding: 1px 8px;
+            border-radius: 10px;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            padding: 32px 0 16px;
+            border-top: 1px solid #e8e8e8;
+            margin-top: 28px;
+            font-size: 13px;
+            color: #9b9a97;
+        }
+
+        /* 响应式 */
+        @media (max-width: 480px) {
+            .container {
+                padding: 16px 14px;
+            }
+
+            .header h1 {
+                font-size: 22px;
+            }
+
+            .header .stats {
+                flex-direction: column;
+                gap: 8px;
+                align-items: center;
+            }
+
+            .card {
+                padding: 18px;
+            }
+
+            .card-title {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <div class="header">
+            <h1>AI 日报</h1>
+            <div class="date">2026年02月25日</div>
+            <div class="stats">
+                <span>📰 收录：6 条</span>
+                <span>📅 覆盖：2026-02-23 ~ 2026-02-25</span>
+                <span>⭐ 精选：第 1 条</span>
+            </div>
+        </div>
+
+        <!-- 深度学习精选提示 -->
+        <div class="highlight-banner">
+            💡 <strong>今日深度学习精选：</strong>OpenAI 发布 Sora 重大更新：支持长视频生成与多镜头控制 — 推荐深入阅读原文
+        </div>
+
+        <!-- 信息卡片区域（按分类分组展示） -->
+
+        <!--
+        使用说明：
+        生成日报时，将信息按三大分类分组，每组用 .section 包裹：
+
+        === 分类规则 ===
+        1. 🔬 技术突破：标签含 #技术 或 #论文 的信息（模型架构、芯片硬件、训练方法、安全研究等）
+        2. 🚀 产品应用：标签含 #产品 或 #应用 的信息（新产品发布、功能更新、应用落地等）
+        3. 📊 行业动态：标签含 #行业 的信息（融资投资、政策合规、战略合作、市场格局等）
+        注意：一条信息只归入一个最匹配的分类，不重复出现。
+        优先级判断：若同时含多个标签，按第一标签归类（如 #技术 #产品 归入"技术突破"）。
+
+        === 分组结构 ===
+        <div class="section section-技术突破">
+            <div class="section-header">
+                <span class="section-icon">🔬</span>
+                <span class="section-title">技术突破</span>
+                <span class="section-count">N 条</span>
+            </div>
+            <div class="card">...</div>
+            <div class="card">...</div>
+        </div>
+
+        <div class="section section-产品应用">
+            <div class="section-header">
+                <span class="section-icon">🚀</span>
+                <span class="section-title">产品应用</span>
+                <span class="section-count">N 条</span>
+            </div>
+            <div class="card">...</div>
+        </div>
+
+        <div class="section section-行业动态">
+            <div class="section-header">
+                <span class="section-icon">📊</span>
+                <span class="section-title">行业动态</span>
+                <span class="section-count">N 条</span>
+            </div>
+            <div class="card">...</div>
+        </div>
+
+        === 单个卡片结构（不变） ===
+        <div class="card">
+            <div class="card-index">信息 1</div>
+            <div class="card-title">标题内容</div>
+            <div class="card-date">📅 发布于 2026-02-21</div>
+            <div class="card-field">
+                <span class="label">核心内容：</span>
+                <span class="value">50-100字的核心内容摘要</span>
+            </div>
+            <div class="card-field">
+                <span class="label">价值：</span>
+                <span class="value">信息价值说明</span>
+            </div>
+            <div class="tags">
+                <span class="tag tag-技术">#技术</span>
+                <span class="tag tag-产品">#产品</span>
+            </div>
+            <div class="card-link">
+                🔗 <a href="链接URL" target="_blank">链接URL</a>
+                <!-- 如该信息来源不在 info-sources.md 固定列表中，添加外部来源标记 -->
+                <!-- <span class="source-external">📡 非固定源</span> -->
+            </div>
+        </div>
+
+        === 非固定信息源标记规则 ===
+        生成日报时，对每条信息的链接来源进行判断：
+        - 如果来源域名属于 info-sources.md 中的固定信息源 → 不添加标记
+        - 如果来源域名不在固定信息源列表中 → 在链接后添加 <span class="source-external">📡 非固定源</span>
+        示例：来自 techcrunch.com 的信息（不在固定源中）→ 添加标记
+        示例：来自 openai.com 的信息（在固定源中）→ 不添加标记
+
+        标签 class 对照：
+        - #技术 → tag-技术
+        - #产品 → tag-产品
+        - #应用 → tag-应用
+        - #论文 → tag-论文
+        - #行业 → tag-行业
+
+        占位符说明：
+        - 2026-02-25 → 页面 title 中的日期，格式 YYYY-MM-DD
+        - 2026年02月25日 → 中文日期，格式 YYYY年MM月DD日
+        - 6 → 信息总条数
+        - 2026-02-23 → 信息覆盖区间起始日期，格式 YYYY-MM-DD
+        - 2026-02-25 → 信息覆盖区间结束日期，格式 YYYY-MM-DD
+        - 1 → 深度学习精选编号
+        - OpenAI 发布 Sora 重大更新：支持长视频生成与多镜头控制 → 深度学习精选标题
+        -->
+
+        
+        <div class="section section-技术突破">
+            <div class="section-header">
+                <span class="section-icon">🔬</span>
+                <span class="section-title">技术突破</span>
+                <span class="section-count">4 条</span>
+            </div>
+
+            <div class="card">
+                <div class="card-index">信息 1</div>
+                <div class="card-title">OpenAI 发布 Sora 重大更新：支持长视频生成与多镜头控制</div>
+                <div class="card-date">📅 发布于 2026-02-24</div>
+                <div class="card-field">
+                    <span class="label">核心内容：</span>
+                    <span class="value">OpenAI 在官方博客宣布，其文生视频模型 Sora 迎来重大升级。新版本不仅将单次生成视频时长提升至3分钟，还引入了革命性的“多镜头控制”功能。用户可以通过文本指令精确指定镜头切换、运镜方式和画面构图，实现了从“生成视频片段”到“导演短片”的跨越。</span>
+                </div>
+                <div class="card-field">
+                    <span class="label">价值：</span>
+                    <span class="value">这是文生视频领域的一次里程碑式进步，标志着AI视频生成从简单的片段合成向可控、连贯的叙事创作迈进，对影视、广告、游戏等行业将产生深远影响。</span>
+                </div>
+                <div class="tags"><span class="tag tag-技术">#技术</span><span class="tag tag-产品">#产品</span></div>
+                <div class="card-link">
+                    🔗 <a href="https://openai.com/blog/sora-update-extended-length-and-multi-shot-control" target="_blank">https://openai.com/blog/sora-update-extended-length-and-multi-shot-control</a>
+                    
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-index">信息 2</div>
+                <div class="card-title">Anthropic 推出 Claude 3.5 Sonnet 推理版，专为复杂逻辑任务优化</div>
+                <div class="card-date">📅 发布于 2026-02-23</div>
+                <div class="card-field">
+                    <span class="label">核心内容：</span>
+                    <span class="value">Anthropic 发布了 Claude 3.5 系列的新成员 “Sonnet-Reasoning”。该版本在原有 Sonnet 模型的基础上，通过新的训练方法显著提升了在数学推理、代码调试、多步骤规划等需要深度逻辑思考任务上的性能。官方基准测试显示，其在 GSM8K 和 MATH 数据集上的得分大幅领先。</span>
+                </div>
+                <div class="card-field">
+                    <span class="label">价值：</span>
+                    <span class="value">针对特定能力进行模型优化的趋势日益明显。Claude 3.5 Sonnet 推理版的发布，为需要高可靠性和强逻辑能力的专业场景（如科研、金融分析、复杂编程）提供了更优的AI工具。</span>
+                </div>
+                <div class="tags"><span class="tag tag-技术">#技术</span><span class="tag tag-产品">#产品</span></div>
+                <div class="card-link">
+                    🔗 <a href="https://www.anthropic.com/news/claude-3-5-sonnet-reasoning" target="_blank">https://www.anthropic.com/news/claude-3-5-sonnet-reasoning</a>
+                    
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-index">信息 3</div>
+                <div class="card-title">Meta 开源 Llama 3.2 70B 指令微调版本及完整训练数据集</div>
+                <div class="card-date">📅 发布于 2026-02-25</div>
+                <div class="card-field">
+                    <span class="label">核心内容：</span>
+                    <span class="value">Meta AI 宣布开源 Llama 3.2 70B 的指令微调版本（Llama-3.2-70B-Instruct），并同时公开了用于该模型微调的超过100万条高质量人类反馈数据。此举旨在推动开源社区在对话对齐、安全性和有用性方面的研究，降低高质量指令微调的门槛。</span>
+                </div>
+                <div class="card-field">
+                    <span class="label">价值：</span>
+                    <span class="value">Meta 再次以“开源一切”的策略推动生态发展。公开高质量训练数据比单纯开源模型更具价值，能让研究者和开发者更好地理解并复现大模型的对话能力，加速整个开源AI社区的进步。</span>
+                </div>
+                <div class="tags"><span class="tag tag-技术">#技术</span><span class="tag tag-开源">#开源</span></div>
+                <div class="card-link">
+                    🔗 <a href="https://ai.meta.com/blog/llama-3-2-70b-instruct-open-source-dataset/" target="_blank">https://ai.meta.com/blog/llama-3-2-70b-instruct-open-source-dataset/</a>
+                    
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-index">信息 4</div>
+                <div class="card-title">Google DeepMind 发布 SIMA：首个能在复杂3D游戏中执行通用指令的AI智能体</div>
+                <div class="card-date">📅 发布于 2026-02-24</div>
+                <div class="card-field">
+                    <span class="label">核心内容：</span>
+                    <span class="value">Google DeepMind 推出名为 SIMA（Scalable Instructable Multiworld Agent）的通用游戏AI智能体。它不针对单一游戏训练，而是能理解自然语言指令，在《无人深空》、《欧洲卡车模拟2》等多个从未见过的3D游戏中执行“建造堡垒”、“开车到加油站”等复杂任务，展示了强大的泛化与理解能力。</span>
+                </div>
+                <div class="card-field">
+                    <span class="label">价值：</span>
+                    <span class="value">SIMA 是迈向通用AI智能体的重要一步。它证明了一个模型可以通过学习基础概念（如空间、物体、操作）来适应全新环境，这为未来开发能在现实世界执行复杂任务的机器人或虚拟助手奠定了基础。</span>
+                </div>
+                <div class="tags"><span class="tag tag-技术">#技术</span><span class="tag tag-Agent">#Agent</span></div>
+                <div class="card-link">
+                    🔗 <a href="https://deepmind.google/discover/blog/sima-generalist-ai-agent-for-3d-virtual-environments/" target="_blank">https://deepmind.google/discover/blog/sima-generalist-ai-agent-for-3d-virtual-environments/</a>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="section section-产品应用">
+            <div class="section-header">
+                <span class="section-icon">🚀</span>
+                <span class="section-title">产品应用</span>
+                <span class="section-count">1 条</span>
+            </div>
+
+            <div class="card">
+                <div class="card-index">信息 5</div>
+                <div class="card-title">微软将 Copilot 深度集成至 Windows 12 系统层，推出“连续体”交互模式</div>
+                <div class="card-date">📅 发布于 2026-02-23</div>
+                <div class="card-field">
+                    <span class="label">核心内容：</span>
+                    <span class="value">微软在最新的 Windows 12 开发者预览版中展示了全新的 Copilot “连续体”模式。Copilot 不再只是一个侧边栏应用，而是成为系统底层服务，可以实时分析屏幕内容、理解用户工作流上下文，并主动提供建议或自动执行跨应用任务，如根据邮件内容生成会议纪要并预约日程。</span>
+                </div>
+                <div class="card-field">
+                    <span class="label">价值：</span>
+                    <span class="value">这代表了AI从“工具”向“智能环境”的转变。微软通过操作系统级的深度集成，正在重新定义人机交互范式，让AI成为无缝、主动的数字助手，可能极大提升个人电脑的生产力上限。</span>
+                </div>
+                <div class="tags"><span class="tag tag-产品">#产品</span><span class="tag tag-应用">#应用</span></div>
+                <div class="card-link">
+                    🔗 <a href="https://learn.microsoft.com/en-us/shows/make-azure-ai-real/copilot-continuum-windows-12" target="_blank">https://learn.microsoft.com/en-us/shows/make-azure-ai-real/copilot-continuum-windows-12</a>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="section section-行业动态">
+            <div class="section-header">
+                <span class="section-icon">📊</span>
+                <span class="section-title">行业动态</span>
+                <span class="section-count">1 条</span>
+            </div>
+
+            <div class="card">
+                <div class="card-index">信息 6</div>
+                <div class="card-title">AI芯片初创公司 Ethereal 获 5.2 亿美元B轮融资，专注下一代“存算一体”架构</div>
+                <div class="card-date">📅 发布于 2026-02-25</div>
+                <div class="card-field">
+                    <span class="label">核心内容：</span>
+                    <span class="value">据 TechCrunch 报道，专注于“存算一体”（Compute-in-Memory）架构的AI芯片公司 Ethereal Computing 完成了由 a16z 和 NEA 领投的5.2亿美元B轮融资。其芯片旨在突破传统冯·诺依曼架构的“内存墙”瓶颈，宣称能为大模型推理带来10倍能效提升。公司计划在2026年底流片首款产品。</span>
+                </div>
+                <div class="card-field">
+                    <span class="label">价值：</span>
+                    <span class="value">巨额融资反映了资本市场对突破性AI硬件架构的强烈兴趣。随着大模型规模增长，传统芯片能效瓶颈凸显，“存算一体”等新架构被视为下一代AI算力的关键，可能重塑产业链格局。</span>
+                </div>
+                <div class="tags"><span class="tag tag-行业">#行业</span><span class="tag tag-硬件">#硬件</span></div>
+                <div class="card-link">
+                    🔗 <a href="https://techcrunch.com/2026/02/25/ethereal-computing-520m-series-b-ai-chips/" target="_blank">https://techcrunch.com/2026/02/25/ethereal-computing-520m-series-b-ai-chips/</a>
+                    <span class="source-external">📡 非固定源</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 页脚 -->
+        <div class="footer">
+            AI 日报 · 每日精选 AI 领域核心资讯<br>
+            数据来源：OpenAI / Anthropic / Google DeepMind / Meta AI 等权威信息源
+        </div>
+    </div>
+</body>
+</html>
