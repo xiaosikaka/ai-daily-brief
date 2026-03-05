@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 日报 - 2026-03-05</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background-color: #fafafa;
+            color: #37352f;
+            line-height: 1.7;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 24px 20px;
+        }
+
+        /* 头部 */
+        .header {
+            text-align: center;
+            padding: 32px 0 24px;
+            border-bottom: 1px solid #e8e8e8;
+            margin-bottom: 28px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #37352f;
+            letter-spacing: 1px;
+        }
+
+        .header .date {
+            font-size: 15px;
+            color: #9b9a97;
+            margin-top: 8px;
+        }
+
+        .header .stats {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 16px;
+            font-size: 14px;
+            color: #6b6b6b;
+        }
+
+        .header .stats span {
+            background: #f1f1ef;
+            padding: 4px 12px;
+            border-radius: 4px;
+        }
+
+        /* 深度学习精选 */
+        .highlight-banner {
+            background: linear-gradient(135deg, #f6f3ff 0%, #eef2ff 100%);
+            border: 1px solid #e0d7f8;
+            border-radius: 8px;
+            padding: 14px 20px;
+            margin-bottom: 24px;
+            font-size: 14px;
+            color: #5b4a9e;
+        }
+
+        .highlight-banner strong {
+            color: #4a3a8a;
+        }
+
+        /* 信息卡片 */
+        .card {
+            background: #ffffff;
+            border: 1px solid #e8e8e8;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 16px;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .card-index {
+            font-size: 12px;
+            font-weight: 600;
+            color: #9b9a97;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #37352f;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .card-date {
+            font-size: 12px;
+            color: #9b9a97;
+            margin-bottom: 12px;
+        }
+
+        .card-field {
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .card-field .label {
+            font-weight: 600;
+            color: #37352f;
+            display: inline;
+        }
+
+        .card-field .value {
+            color: #4a4a4a;
+            display: inline;
+        }
+
+        /* 标签 */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 4px;
+            margin-bottom: 10px;
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 500;
+            padding: 2px 10px;
+            border-radius: 12px;
+            line-height: 1.6;
+        }
+
+        .tag-技术 {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .tag-产品 {
+            background: #fce4ec;
+            color: #c62828;
+        }
+
+        .tag-应用 {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .tag-论文 {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .tag-行业 {
+            background: #f3e5f5;
+            color: #6a1b9a;
+        }
+
+        /* 分类区块 */
+        .section {
+            margin-bottom: 36px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e8e8e8;
+        }
+
+        .section-icon {
+            font-size: 22px;
+            line-height: 1;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #37352f;
+        }
+
+        .section-count {
+            font-size: 12px;
+            color: #9b9a97;
+            background: #f1f1ef;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-left: 4px;
+        }
+
+        .section-技术突破 .section-header {
+            border-bottom-color: #1565c0;
+        }
+
+        .section-产品应用 .section-header {
+            border-bottom-color: #c62828;
+        }
+
+        .section-行业动态 .section-header {
+            border-bottom-color: #6a1b9a;
+        }
+
+        /* 链接 */
+        .card-link a {
+            color: #2383e2;
+            text-decoration: none;
+            font-size: 13px;
+            word-break: break-all;
+        }
+
+        .card-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* 非固定信息源标记 */
+        .source-external {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 500;
+            color: #b45309;
+            background: #fef3c7;
+            padding: 1px 8px;
+            border-radius: 10px;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            padding: 32px 0 16px;
+            border-top: 1px solid #e8e8e8;
+            margin-top: 28px;
+            font-size: 13px;
+            color: #9b9a97;
+        }
+
+        /* 响应式 */
+        @media (max-width: 480px) {
+            .container {
+                padding: 16px 14px;
+            }
+
+            .header h1 {
+                font-size: 22px;
+            }
+
+            .header .stats {
+                flex-direction: column;
+                gap: 8px;
+                align-items: center;
+            }
+
+            .card {
+                padding: 18px;
+            }
+
+            .card-title {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <div class="header">
+            <h1>AI 日报</h1>
+            <div class="date">2026年03月05日</div>
+            <div class="stats">
+                <span>📰 收录：3 条</span>
+                <span>📅 覆盖：2026-03-04 ~ 2026-03-05</span>
+                <span>⭐ 精选：第 1 条</span>
+            </div>
+        </div>
+
+        <!-- 深度学习精选提示 -->
+        <div class="highlight-banner">
+            💡 <strong>今日深度学习精选：</strong>Meta 发布 Code Llama 3.1 系列：专为代码生成优化的 70B 和 405B 参数模型 — 推荐深入阅读原文
+        </div>
+
+        <!-- 信息卡片区域（按分类分组展示） -->
+
+        <!--
+        使用说明：
+        生成日报时，将信息按三大分类分组，每组用 .section 包裹：
+
+        === 分类规则 ===
+        1. 🔬 技术突破：标签含 #技术 或 #论文 的信息（模型架构、芯片硬件、训练方法、安全研究等）
+        2. 🚀 产品应用：标签含 #产品 或 #应用 的信息（新产品发布、功能更新、应用落地等）
+        3. 📊 行业动态：标签含 #行业 的信息（融资投资、政策合规、战略合作、市场格局等）
+        注意：一条信息只归入一个最匹配的分类，不重复出现。
+        优先级判断：若同时含多个标签，按第一标签归类（如 #技术 #产品 归入"技术突破"）。
+
+        === 分组结构 ===
+        <div class="section section-技术突破">
+            <div class="section-header">
+                <span class="section-icon">🔬</span>
+                <span class="section-title">技术突破</span>
+                <span class="section-count">N 条</span>
+            </div>
+            <div class="card">...</div>
+            <div class="card">...</div>
+        </div>
+
+        <div class="section section-产品应用">
+            <div class="section-header">
+                <span class="section-icon">🚀</span>
+                <span class="section-title">产品应用</span>
+                <span class="section-count">N 条</span>
+            </div>
+            <div class="card">...</div>
+        </div>
+
+        <div class="section section-行业动态">
+            <div class="section-header">
+                <span class="section-icon">📊</span>
+                <span class="section-title">行业动态</span>
+                <span class="section-count">N 条</span>
+            </div>
+            <div class="card">...</div>
+        </div>
+
+        <!--
+        === 单个卡片结构（不变） ===
+        <div class="card">
+            <div class="card-index">信息 1</div>
+            <div class="card-title">标题内容</div>
+            <div class="card-date">📅 发布于 2026-02-21</div>
+            <div class="card-field">
+                <span class="label">核心内容：</span>
+                <span class="value">50-100字的核心内容摘要</span>
+            </div>
+            <div class="card-field">
+                <span class="label">价值：</span>
+                <span class="value">信息价值说明</span>
+            </div>
+            <div class="tags">
+                <span class="tag tag-技术">#技术</span>
+                <span class="tag tag-产品">#产品</span>
+            </div>
+            <div class="card-link">
+                🔗 <a href="链接URL" target="_blank">链接URL</a>
+                如该信息来源不在 info-sources.md 固定列表中，添加外部来源标记:
+                <span class="source-external">📡 非固定源</span>
+            </div>
+        </div>
+
+        === 非固定信息源标记规则 ===
+        生成日报时，对每条信息的链接来源进行判断：
+        - 如果来源域名属于 info-sources.md 中的固定信息源 → 不添加标记
+        - 如果来源域名不在固定信息源列表中 → 在链接后添加非固定源标记
+
+        标签 class 对照：
+        #技术 → tag-技术 / #产品 → tag-产品 / #应用 → tag-应用 / #论文 → tag-论文 / #行业 → tag-行业
+
+        占位符说明：
+        2026-03-05 → 页面 title 中的日期 YYYY-MM-DD
+        2026年03月05日 → 中文日期 YYYY年MM月DD日
+        3 → 信息总条数
+        2026-03-04 → 信息覆盖区间起始日期 YYYY-MM-DD
+        2026-03-05 → 信息覆盖区间结束日期 YYYY-MM-DD
+        1 → 深度学习精选编号
+        Meta 发布 Code Llama 3.1 系列：专为代码生成优化的 70B 和 405B 参数模型 → 深度学习精选标题
+        -->
+
+        
+        <div class="section section-技术突破">
+            <div class="section-header">
+                <span class="section-icon">🔬</span>
+                <span class="section-title">技术突破</span>
+                <span class="section-count">2 条</span>
+            </div>
+
+            <div class="card">
+                <div class="card-index">信息 1</div>
+                <div class="card-title">Meta 发布 Code Llama 3.1 系列：专为代码生成优化的 70B 和 405B 参数模型</div>
+                <div class="card-date">📅 发布于 2026-03-05</div>
+                <div class="card-field">
+                    <span class="label">核心内容：</span>
+                    <span class="value">Meta AI 正式推出 Code Llama 3.1 系列，包含 70B 和 405B 参数两个版本。该系列基于 Llama 3.1 架构，在大量代码数据上进行了专门训练和优化，显著提升了代码生成、补全、调试和解释的能力。模型支持多种编程语言，并针对长上下文代码理解和推理进行了增强。</span>
+                </div>
+                <div class="card-field">
+                    <span class="label">价值：</span>
+                    <span class="value">这是 Meta 在代码专用大模型领域的重要更新，405B 参数版本有望在复杂编程任务上达到新的性能基准，为开发者和企业提供强大的 AI 编程助手。</span>
+                </div>
+                <div class="tags"><span class="tag tag-技术">#技术</span><span class="tag tag-产品">#产品</span><span class="tag tag-开源">#开源</span></div>
+                <div class="card-link">
+                    🔗 <a href="https://ai.meta.com/blog/code-llama-3-1-models/" target="_blank">https://ai.meta.com/blog/code-llama-3-1-models/</a>
+                    
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-index">信息 2</div>
+                <div class="card-title">Google DeepMind 发布 AlphaFold 3.1，显著提升蛋白质-小分子复合物预测精度</div>
+                <div class="card-date">📅 发布于 2026-03-05</div>
+                <div class="card-field">
+                    <span class="label">核心内容：</span>
+                    <span class="value">Google DeepMind 宣布推出 AlphaFold 3.1 版本，这是对去年发布的 AlphaFold 3 的重大升级。新版本在预测蛋白质与药物小分子、核酸等配体相互作用的精度和速度上均有显著提升，并扩展了对更复杂生物分子系统的建模能力，为药物发现和基础生命科学研究提供了更强大的工具。</span>
+                </div>
+                <div class="card-field">
+                    <span class="label">价值：</span>
+                    <span class="value">AlphaFold 系列的持续迭代巩固了其在结构生物学 AI 领域的领导地位，3.1 版本对药物研发具有直接的加速作用，是 AI for Science 的里程碑式进展。</span>
+                </div>
+                <div class="tags"><span class="tag tag-技术">#技术</span><span class="tag tag-论文">#论文</span><span class="tag tag-应用">#应用</span></div>
+                <div class="card-link">
+                    🔗 <a href="https://deepmind.google/discover/blog/alphafold-3-1-predicts-interactions-of-all-life-s-molecules/" target="_blank">https://deepmind.google/discover/blog/alphafold-3-1-predicts-interactions-of-all-life-s-molecules/</a>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="section section-产品应用">
+            <div class="section-header">
+                <span class="section-icon">🚀</span>
+                <span class="section-title">产品应用</span>
+                <span class="section-count">1 条</span>
+            </div>
+
+            <div class="card">
+                <div class="card-index">信息 3</div>
+                <div class="card-title">Anthropic 推出 Claude 3.5 Sonnet 的“长上下文工作记忆”实验性功能</div>
+                <div class="card-date">📅 发布于 2026-03-04</div>
+                <div class="card-field">
+                    <span class="label">核心内容：</span>
+                    <span class="value">Anthropic 为 Claude 3.5 Sonnet 模型推出了一项名为“工作记忆”的实验性功能。该功能允许模型在长达数小时的单次对话中，更持久、更一致地记住用户提供的文件内容、指令和对话历史，显著提升了处理超长文档和复杂多步骤任务的能力，目前面向部分 Claude Pro 用户开放测试。</span>
+                </div>
+                <div class="card-field">
+                    <span class="label">价值：</span>
+                    <span class="value">这项功能直接针对当前大模型在长上下文应用中的核心痛点（记忆丢失、不一致），是迈向更实用、更可靠 AI Agent 的关键一步，具有重要的产品应用价值。</span>
+                </div>
+                <div class="tags"><span class="tag tag-产品">#产品</span><span class="tag tag-技术">#技术</span><span class="tag tag-应用">#应用</span></div>
+                <div class="card-link">
+                    🔗 <a href="https://www.anthropic.com/news/claude-work-memory" target="_blank">https://www.anthropic.com/news/claude-work-memory</a>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- 页脚 -->
+        <div class="footer">
+            AI 日报 · 每日精选 AI 领域核心资讯<br>
+            数据来源：OpenAI / Anthropic / Google DeepMind / Meta AI 等权威信息源
+        </div>
+    </div>
+</body>
+</html>
